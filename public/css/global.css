@@ -21,6 +21,12 @@ textarea {
   @apply outline-0;
 }
 
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 /* max-width에 관한 css */
 .max-width {
   @apply max-w-1920px m-auto px-5;

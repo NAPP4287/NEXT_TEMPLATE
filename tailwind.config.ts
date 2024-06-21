@@ -24,13 +24,13 @@ const config: Config = {
         black: "#1a1a1a",
         red: {
           main: "#d65c2f",
-          light: "#ff8f66",
-          med: "#eb6434",
+          light: "#fc8d83",
+          md: "#fc7468",
         },
         green: {
           main: "#00bd48",
           light: "#6ee69c",
-          med: "#3ac26e",
+          md: "#3ac26e",
         },
         primay: {
           // 프로젝트별 primary 색상
@@ -39,7 +39,7 @@ const config: Config = {
         },
         gray: {
           light: "#dedede",
-          med: "#8c8c8c",
+          md: "#8c8c8c",
           dark: "#4f4f4f",
         },
       },
