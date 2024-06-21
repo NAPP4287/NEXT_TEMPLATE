@@ -8,10 +8,16 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      maxWidth: {
+        "1920px": "1920px",
+      },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+      },
+      outline: {
+        none: ["0", "transparent"],
       },
       colors: {
         white: "#ffffff",
