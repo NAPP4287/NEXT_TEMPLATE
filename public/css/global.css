@@ -1,0 +1,56 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Arial", sans-serif;
+}
+
+a {
+  @apply text-blue-500 hover:text-blue-700;
+  text-decoration: underline;
+}
+
+input,
+textarea {
+  @apply outline-0;
+}
+
+/* max-width에 관한 css */
+.max-width {
+  @apply max-w-1920px m-auto px-5;
+}
+
+.mx-w-500 {
+  @apply max-w-[500px] mx-auto;
+}
+
+/* flex에 관한 css */
+.flex-center {
+  @apply flex justify-center items-center;
+}
+
+.flex-row-center {
+  @apply flex justify-center;
+}
+
+.flex-col-center {
+  @apply flex items-center;
+}
+
+.r-flex-center {
+  @apply flex flex-col items-center justify-center;
+}
+
+.r-flex-row-center {
+  @apply flex flex-col items-center;
+}
+
+.r-flex-col-center {
+  @apply flex flex-col justify-center;
+}
