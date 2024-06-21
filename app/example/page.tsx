@@ -7,7 +7,13 @@ import { useState } from "react";
 // components
 import Input from "@/components/atoms/Input";
 import ObjInput from "@/components/atoms/ObjInput";
+import InvaildChkInput from "@/components/atoms/InvalidChkInput";
 import Button from "@/components/atoms/Button";
+// utils
+import { handleCountTil } from "@/utils/commonUtils";
+// data
+import { DSignupInput } from "@/data/DInput";
+import Label from "@/components/atoms/Label";
 
 const ExamplePage = () => {
   // 단일 인풋 state
@@ -15,6 +21,16 @@ const ExamplePage = () => {
   const [input2, setInput2] = useState("");
   const [input3, setInput3] = useState("");
   const [input4, setInput4] = useState("");
+
+  // 유효성 검사 인풋 state
+  const [invalidChkInfo, setInvalidChkInfo] = useState({
+    email: "",
+    uId: "",
+    phone: "",
+    pwd: "",
+    pwdChk: "",
+    ssr: "",
+  });
 
   // obj input state
   const [objInput, setObjInput] = useState({
@@ -74,6 +90,27 @@ const ExamplePage = () => {
         disabled={true}
         className="my-5"
       />
+
+      <h1 className="mt-5">유효성 검사 인풋</h1>
+      {Object.keys(DSignupInput).map((el: string) => (
+        <div className="w-full" key={el}>
+          <Label
+            title={DSignupInput[el].name}
+            isRequire={DSignupInput[el].require}
+          />
+          <InvaildChkInput
+            isRound={true}
+            name={el}
+            setValues={setInvalidChkInfo}
+            values={invalidChkInfo}
+            placeholder={DSignupInput[el].placeholder}
+            inputMode={DSignupInput[el].inputMode}
+            type={DSignupInput[el].type}
+            maxLength={undefined}
+            invalidTxt={DSignupInput[el].invalidTxt}
+          />
+        </div>
+      ))}
 
       <h1>버튼</h1>
       <Button
@@ -179,6 +216,10 @@ const ExamplePage = () => {
           />
         ))
       )}
+
+      <h1 className="mt-5">유틸 사용</h1>
+      <div>인자 타입 string 허용: {handleCountTil("1000000")}</div>
+      <div>인자 타입 number 허용: {handleCountTil(1000000)}</div>
     </div>
   );
 };

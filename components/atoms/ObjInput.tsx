@@ -113,6 +113,8 @@ const ObjInput = (props: IObjInputProps) => {
           type={type}
           disabled={disabled}
           value={settingInputValue()}
+          pattern={type === "number" ? "[0-9]*" : undefined}
+          onWheel={(event) => (event.target as HTMLElement).blur()}
         />
       )}
     </>

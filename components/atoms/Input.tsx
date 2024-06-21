@@ -91,6 +91,8 @@ const Input = (props: IInputProps) => {
           inputMode={inputMode}
           type={type}
           disabled={disabled}
+          pattern={type === "number" ? "[0-9]*" : undefined}
+          onWheel={(event) => (event.target as HTMLElement).blur()}
         />
       )}
     </>

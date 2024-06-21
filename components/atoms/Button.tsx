@@ -81,11 +81,11 @@ const Button = (props: IButtonProps) => {
         disabled={disabled}
       >
         {img && imgPlace === "left" && (
-          <Image loading="lazy" src={img} alt="btn_icon" className={"mr-1"} />
+          <Image priority src={img} alt="btn_icon" className={"mr-1"} />
         )}
         {title}
         {img && imgPlace === "right" && (
-          <Image loading="lazy" src={img} alt="btn_icon" className={"ml-1"} />
+          <Image priority src={img} alt="btn_icon" className={"ml-1"} />
         )}
       </button>
     </>

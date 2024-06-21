@@ -1,6 +1,3 @@
-// interface
-import { IChkSignupInvalidInfoParam } from "@/types/IParameter";
-
 // 스크롤 맨 위로
 export const handleScrollToTop = () => {
   window.scrollTo({
@@ -33,7 +30,7 @@ export const handleCountTil = (val: string | number) => {
 };
 
 // 회원가입 유효성 검사
-export const chkSignupInvalidInfo = (info: IChkSignupInvalidInfoParam) => {
+export const chkSignupInvalidInfo = (info: { [key: string]: string }) => {
   const keysArr = Object.keys(info);
   const valuesArr = Object.values(info);
 

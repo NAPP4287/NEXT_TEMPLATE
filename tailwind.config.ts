@@ -23,7 +23,7 @@ const config: Config = {
         white: "#ffffff",
         black: "#1a1a1a",
         red: {
-          main: "#d65c2f",
+          main: "#d60e00",
           light: "#fc8d83",
           md: "#fc7468",
         },

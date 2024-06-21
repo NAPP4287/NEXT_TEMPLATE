@@ -51,6 +51,19 @@ export interface IObjInputProps {
   maxLength: number | undefined;
 }
 
+export interface IInvaildChkInputProps {
+  isRound: boolean;
+  disabled?: boolean;
+  name: string;
+  setValues: Function;
+  values: { [key: string]: string };
+  placeholder: string;
+  inputMode: "none" | "text" | "decimal" | "numeric" | "tel";
+  type: "email" | "number" | "password" | "tel" | "text" | "url";
+  maxLength: number | undefined;
+  invalidTxt: string;
+}
+
 export interface IButtonProps {
   title: string | undefined;
   bg: ColorType;
@@ -62,5 +75,11 @@ export interface IButtonProps {
   isRound: boolean;
   img?: StaticImageData;
   imgPlace?: "left" | "right";
+  className?: string;
+}
+
+export interface ILabelProps {
+  title: string;
+  isRequire: boolean;
   className?: string;
 }
