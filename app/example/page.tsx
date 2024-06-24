@@ -9,11 +9,12 @@ import Input from "@/components/atoms/Input";
 import ObjInput from "@/components/atoms/ObjInput";
 import InvaildChkInput from "@/components/atoms/InvalidChkInput";
 import Button from "@/components/atoms/Button";
+import Label from "@/components/atoms/Label";
+import Pagination from "@/components/atoms/Pagination";
 // utils
 import { handleCountTil } from "@/utils/commonUtils";
 // data
 import { DSignupInput } from "@/data/DInput";
-import Label from "@/components/atoms/Label";
 
 const ExamplePage = () => {
   // 단일 인풋 state
@@ -40,6 +41,15 @@ const ExamplePage = () => {
   const [objInputArr, setObjInputArr] = useState<
     Array<{ [key: string]: string }>
   >([{ 이메일: "", 비밀번호: "" }]);
+
+  // pagination state
+  const [pagination, setPagination] = useState<{
+    totalPage: number;
+    currentPage: number;
+  }>({
+    totalPage: 10,
+    currentPage: 1,
+  });
 
   // objInputArr 추가 버튼
   const addObjArr = () => {
@@ -220,6 +230,14 @@ const ExamplePage = () => {
       <h1 className="mt-5">유틸 사용</h1>
       <div>인자 타입 string 허용: {handleCountTil("1000000")}</div>
       <div>인자 타입 number 허용: {handleCountTil(1000000)}</div>
+
+      <h1 className="mt-5">페이지네이션</h1>
+      <Pagination
+        pagination={pagination}
+        setPagination={setPagination}
+        showNum={3}
+        path={"example"}
+      />
     </div>
   );
 };

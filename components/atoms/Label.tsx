@@ -6,7 +6,7 @@ const Label = (props: ILabelProps) => {
   const { title, isRequire, className } = props;
 
   return (
-    <label className={`w-full text-left ${className ? className : ""}`}>
+    <label className={`w-full text-left block ${className ? className : ""}`}>
       {title}
       {isRequire && <span className="text-red-md">*</span>}
     </label>

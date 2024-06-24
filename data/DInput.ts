@@ -2,14 +2,6 @@
 import { DSignupInputType } from "@/types/IDatas";
 
 export const DSignupInput: { [key: string]: DSignupInputType } = {
-  ["email"]: {
-    name: "이메일",
-    invalidTxt: "올바르지 않은 이메일 양식입니다.",
-    placeholder: "이메일을 입력해주세요.",
-    require: true,
-    type: "text",
-    inputMode: "text",
-  },
   ["uId"]: {
     name: "아이디",
     invalidTxt: "두글자 이상 입력해주세요.",
@@ -17,14 +9,6 @@ export const DSignupInput: { [key: string]: DSignupInputType } = {
     require: true,
     type: "text",
     inputMode: "text",
-  },
-  ["phone"]: {
-    name: "전화번호",
-    invalidTxt: "올바르지 않은 연락처 양식입니다.",
-    placeholder: "010-1111-1111",
-    require: true,
-    type: "tel",
-    inputMode: "tel",
   },
   ["pwd"]: {
     name: "비밀번호",
@@ -42,12 +26,28 @@ export const DSignupInput: { [key: string]: DSignupInputType } = {
     type: "password",
     inputMode: "text",
   },
+  ["email"]: {
+    name: "이메일",
+    invalidTxt: "올바르지 않은 이메일 양식입니다.",
+    placeholder: "이메일을 입력해주세요.",
+    require: true,
+    type: "text",
+    inputMode: "text",
+  },
+  ["phone"]: {
+    name: "전화번호",
+    invalidTxt: "올바르지 않은 연락처 양식입니다.",
+    placeholder: "010-1111-1111",
+    require: true,
+    type: "tel",
+    inputMode: "tel",
+  },
   ["ssr"]: {
     name: "주민등록번호",
     invalidTxt: "올바르지 않은 주민등록번호 양식이 아닙니다.",
     placeholder: "850123-1012345",
     require: true,
-    type: "number",
+    type: "text",
     inputMode: "numeric",
   },
 };

@@ -1,5 +1,12 @@
+// components
+import SignUpRegister from "@/components/molecules/SignUpRegister";
+
 const Signup = () => {
-  return <div>signup page</div>;
+  return (
+    <>
+      <SignUpRegister />
+    </>
+  );
 };
 
 export default Signup;
