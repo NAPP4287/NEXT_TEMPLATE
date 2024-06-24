@@ -83,3 +83,13 @@ export interface ILabelProps {
   isRequire: boolean;
   className?: string;
 }
+
+export interface IPaginationProps {
+  pagination: {
+    currentPage: number;
+    totalPage: number;
+  };
+  setPagination: Function;
+  showNum: number;
+  path: string;
+}

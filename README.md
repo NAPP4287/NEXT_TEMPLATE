@@ -113,7 +113,7 @@ NEXACODE 프론트엔드 엔지니어라면 누구든 레포지토리 추가 개
 │   │   │   └── page.tsx - /main 페이지
 │   │   │   └── main.modult.css - 해당 폴더의 css 파일
 │   ├── (sign) - 로그인 이전 페이지들
-│   │   ├── sign.module.css - 로그인 이전 페이지 css 파일 (해당 페이지로 안 넣은 이유는 siginin과 │   │   │   signup의 스타일이 같을 것이라고 판단 했기 때문에 부모 파일로 뺌)
+│   │   ├── sign.module.css - 로그인 이전 페이지 css 파일 (해당 페이지로 안 넣은 이유는 siginin과 signup의 스타일이 같을 것이라고 판단 했기 때문에 부모 파일로 뺌)
 │   │   ├── signin - 로그인 페이지
 │   │   │   └── page.tsx
 │   │   └── signup - 회원가입 페이지

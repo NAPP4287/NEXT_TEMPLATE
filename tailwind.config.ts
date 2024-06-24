@@ -34,8 +34,8 @@ const config: Config = {
         },
         primay: {
           // 프로젝트별 primary 색상
-          main: "",
-          sub: "",
+          main: "#972aeb",
+          sub: "#ca85ff",
         },
         gray: {
           light: "#dedede",
