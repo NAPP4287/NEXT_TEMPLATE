@@ -102,7 +102,7 @@ const Pagination = (props: IPaginationProps) => {
             onClick={() => handlePagination(el)}
             className={`cursor-pointer w-[30px] h-[30px] text-center leading-[30px] rounded-md mx-1 ${
               currentPage === el
-                ? "text-white bg-primay-sub"
+                ? "text-white bg-primary-sub"
                 : "border text-gray-light"
             }`}
           >

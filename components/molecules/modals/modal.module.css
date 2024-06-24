@@ -1,0 +1,7 @@
+.modalWrap {
+  @apply fixed w-screen overflow-hidden top-0 h-screen bg-white bg-opacity-50 backdrop-blur-sm flex z-[-1] items-center left-1/2 transform -translate-x-1/2 p-0;
+}
+
+.modalContent {
+  @apply bg-white max-w-[360px] w-4/5 mx-auto rounded-sm min-h-[200px] p-5 shadow-md justify-between;
+}

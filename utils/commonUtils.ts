@@ -1,3 +1,11 @@
+// interface
+import {
+  IObjStringType,
+  IObjNullType,
+  IObjNumberType,
+  IObjUndefinedType,
+} from "@/types/ICommon";
+
 // 스크롤 맨 위로
 export const handleScrollToTop = () => {
   window.scrollTo({
@@ -100,4 +108,37 @@ export const chkEmptyInfo = (
   }
 
   return "go";
+};
+
+// 원하는 key의 value만 type 변경 해주기
+export const changeTypeObj = (
+  obj: { [key: string]: any },
+  key: Array<string>,
+  type: "string" | "number" | "undefined" | "null"
+) => {
+  if (type === "string") {
+    const newObj: IObjStringType = {};
+    for (let i in obj) {
+      newObj[i] = key.includes(i) ? `${obj[i]}` : obj[i];
+    }
+    return newObj;
+  } else if (type === "number") {
+    const newObj: IObjNumberType = {};
+    for (let i in obj) {
+      newObj[i] = key.includes(i) ? +obj[i] : obj[i];
+    }
+    return newObj;
+  } else if (type === "null") {
+    const newObj: IObjNullType = {};
+    for (let i in obj) {
+      newObj[i] = key.includes(i) ? null : obj[i];
+    }
+    return newObj;
+  } else {
+    const newObj: IObjUndefinedType = {};
+    for (let i in obj) {
+      newObj[i] = key.includes(i) ? undefined : obj[i];
+    }
+    return newObj;
+  }
 };

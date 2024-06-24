@@ -134,6 +134,7 @@ NEXACODE 프론트엔드 엔지니어라면 누구든 레포지토리 추가 개
 │   ├── auth - token에 따른 필수 함수 파일
 │   │   └── PrivateRouter.tsx - 로그인 유무에 따른 페이지 구분 파일
 │   └── molecules - atom 보다는 크고 페이지 보다는 작은 컴포넌트 폴더 (페이지명 앞에 필수적으로 붙일 것)
+│   │   ├── modals - 모달을 관리하는 폴더
 │       ├── SignInAction.tsx
 │       └── SignUpRegister.tsx
 ├── config - 개발환경 세팅 폴더

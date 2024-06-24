@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 // css
 import "@/public/css/global.css";
+// lib
+import RecoilRootWrapper from "@/lib/RecoilRoot";
 
 export const metadata: Metadata = {
   title: "NEXT TEMPLATE",
@@ -14,9 +16,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko">
-      <body>
-        <div className="max-width">{children}</div>
-      </body>
+      <RecoilRootWrapper>
+        <body>
+          <div className="max-width">{children}</div>
+        </body>
+      </RecoilRootWrapper>
     </html>
   );
 }

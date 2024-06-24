@@ -32,7 +32,7 @@ const config: Config = {
           light: "#6ee69c",
           md: "#3ac26e",
         },
-        primay: {
+        primary: {
           // 프로젝트별 primary 색상
           main: "#972aeb",
           sub: "#ca85ff",
@@ -61,6 +61,20 @@ const config: Config = {
         lg: "1.4rem",
         xlg: "1.6rem",
       },
+    },
+    keyframes: {
+      fadeout: {
+        "0%": { "z-index": "999", opacity: "1" },
+        "100%": { opacity: "0", "z-index": "-1" },
+      },
+      fadein: {
+        "0%": { opacity: "0", display: "flex" },
+        "100%": { opacity: "1", "z-index": "999" },
+      },
+    },
+    animation: {
+      fadeout: "fadeout 0.2s linear alternate forwards",
+      fadein: "fadein 0.2s linear alternate forwards",
     },
   },
   plugins: [],

@@ -11,12 +11,18 @@ import InvaildChkInput from "@/components/atoms/InvalidChkInput";
 import Button from "@/components/atoms/Button";
 import Label from "@/components/atoms/Label";
 import Pagination from "@/components/atoms/Pagination";
+import AlertModal from "@/components/molecules/modals/AlertModal";
 // utils
-import { handleCountTil } from "@/utils/commonUtils";
+import { handleCountTil, changeTypeObj } from "@/utils/commonUtils";
 // data
 import { DSignupInput } from "@/data/DInput";
+// recoil
+import { useSetRecoilState } from "recoil";
+import { alertModalState } from "@/states/stateModal";
 
 const ExamplePage = () => {
+  // alertModal recoil
+  const setAlertInfo = useSetRecoilState(alertModalState);
   // 단일 인풋 state
   const [input1, setInput1] = useState("");
   const [input2, setInput2] = useState("");
@@ -230,7 +236,21 @@ const ExamplePage = () => {
       <h1 className="mt-5">유틸 사용</h1>
       <div>인자 타입 string 허용: {handleCountTil("1000000")}</div>
       <div>인자 타입 number 허용: {handleCountTil(1000000)}</div>
-
+      <br />
+      <div>
+        특정 obj의 value값 변경하기: <br />
+        {`a의 value type: ${typeof changeTypeObj(
+          { a: "11", b: "12", c: "13" },
+          ["a", "b"],
+          "number"
+        ).a}`}
+        <br />
+        {`c의 value type: ${typeof changeTypeObj(
+          { a: "11", b: "12", c: "13" },
+          ["a"],
+          "number"
+        ).c}`}
+      </div>
       <h1 className="mt-5">페이지네이션</h1>
       <Pagination
         pagination={pagination}
@@ -238,6 +258,27 @@ const ExamplePage = () => {
         showNum={3}
         path={"example"}
       />
+
+      <h1 className="mt-5">모달 열기</h1>
+      <Button
+        title={"모달 열기"}
+        bg={"primary-sub"}
+        color={"white"}
+        action={() =>
+          setAlertInfo({
+            isOpen: true,
+            isOne: false,
+            title: "제목",
+            contents: "컨텐츠입니다.",
+            action: () => console.log("함수 액션입니다."),
+            type: "success",
+            lbtnTitle: "취소",
+            rbtnTitle: "확인",
+          })
+        }
+        isRound={true}
+      />
+      <AlertModal />
     </div>
   );
 };

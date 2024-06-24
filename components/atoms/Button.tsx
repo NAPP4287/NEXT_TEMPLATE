@@ -14,8 +14,8 @@ const bgClasses: Record<ColorType, string> = {
   "gray-main": "bg-gray-main",
   "gray-light": "bg-gray-light",
   "gray-md": "bg-gray-md",
-  "primary-main": "bg-blue-main",
-  "primary-sub": "bg-blue-sub",
+  "primary-main": "bg-primary-main",
+  "primary-sub": "bg-primary-sub",
 };
 
 const colorClasses: Record<ColorType, string> = {
@@ -30,8 +30,8 @@ const colorClasses: Record<ColorType, string> = {
   "gray-main": "text-gray-main",
   "gray-light": "text-gray-light",
   "gray-md": "text-gray-md",
-  "primary-main": "text-blue-main",
-  "primary-sub": "text-blue-sub",
+  "primary-main": "text-primary-main",
+  "primary-sub": "text-primary-sub",
 };
 
 const borderClasses: Record<ColorType, string> = {
