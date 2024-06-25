@@ -55,14 +55,14 @@ const AlertModal = () => {
             title={lbtnTitle}
             action={closeModal}
             color={"white"}
-            bg={"gray-light"}
+            bg={"gray-md"}
             isRound={true}
           />
           {!isOne && (
             <Button
               title={rbtnTitle}
               action={action}
-              bg={"gray-md"}
+              bg={"gray-light"}
               color={"white"}
               isRound={true}
               className="ml-2"

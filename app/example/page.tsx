@@ -13,6 +13,7 @@ import Label from "@/components/atoms/Label";
 import Pagination from "@/components/atoms/Pagination";
 import Select from "@/components/atoms/Select";
 import ObjSelect from "@/components/atoms/ObjSelect";
+import DrageFile from "@/components/atoms/DragFile";
 // utils
 import { handleCountTil, changeTypeObj } from "@/utils/commonUtils";
 // data
@@ -72,6 +73,13 @@ const ExamplePage = () => {
   }>({
     totalPage: 10,
     currentPage: 1,
+  });
+
+  // dragFile state
+  const [dragFile, setDragFile] = useState({ fileName: "", filePath: "" });
+  const [dragDocFile, setDragDocFile] = useState({
+    fileName: "",
+    filePath: "",
   });
 
   // objInputArr 추가 버튼
@@ -365,6 +373,26 @@ const ExamplePage = () => {
           />
         ))
       )}
+
+      <h1 className="mt-5">Drag File</h1>
+      <DrageFile
+        accept={".pdf"}
+        descript={<>파일을 업로드해주세요.</>}
+        type={"doc"}
+        values={dragDocFile}
+        setValues={setDragDocFile}
+        limitSize={{ unit: "MB", size: 13 }}
+      />
+      <DrageFile
+        accept={".png,.jpg,.jpeg"}
+        descript={<>이미지를 업로드해주세요.</>}
+        type={"img"}
+        values={dragFile}
+        setValues={setDragFile}
+        // limitImg={{ width: 100, height: 100, type: "over" }} // width 100px, height 100px 보다 큰 이미지들만 받겠다.
+        limitSize={{ unit: "MB", size: 2 }} // 2KB
+        className="mt-2"
+      />
     </div>
   );
 };

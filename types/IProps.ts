@@ -1,4 +1,5 @@
 import { StaticImageData } from "next/image";
+import { ReactNode } from "react";
 
 // props 타입 지정
 
@@ -121,4 +122,20 @@ export interface IObjSelectProps {
   border?: ColorType;
   isRound: boolean;
   idx?: number;
+}
+
+export interface IDragFileProps {
+  accept: string;
+  descript?: ReactNode;
+  className?: string;
+  type: "img" | "vedio" | "doc" | "music";
+  values: { fileName: string; filePath: string };
+  setValues: Function;
+  disabled?: boolean;
+  limitImg?: {
+    width: number;
+    height: number;
+    type: "same" | "over" | "under" | "ratio";
+  };
+  limitSize?: { unit: "KB" | "MB" | "GB" | "TB"; size: number };
 }
