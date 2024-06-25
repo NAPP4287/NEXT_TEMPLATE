@@ -139,3 +139,8 @@ export interface IDragFileProps {
   };
   limitSize?: { unit: "KB" | "MB" | "GB" | "TB"; size: number };
 }
+
+export interface IMainTempleteProps {
+  title: string;
+  children: ReactNode;
+}

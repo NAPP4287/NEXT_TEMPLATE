@@ -93,6 +93,7 @@ const Input = (props: IInputProps) => {
           disabled={disabled}
           pattern={type === "number" ? "[0-9]*" : undefined}
           onWheel={(event) => (event.target as HTMLElement).blur()}
+          autoComplete="off"
         />
       )}
     </>

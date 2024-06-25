@@ -22,6 +22,11 @@ select {
   @apply outline-0;
 }
 
+input::placeholder,
+textarea::placeholder {
+  @apply text-gray-light;
+}
+
 input[type="number"]::-webkit-outer-spin-button,
 input[type="number"]::-webkit-inner-spin-button {
   -webkit-appearance: none;

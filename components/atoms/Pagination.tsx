@@ -23,51 +23,49 @@ const Pagination = (props: IPaginationProps) => {
       setPagination({ ...pagination, currentPage: num });
       router.replace(`/${path}?page=${num}`);
     },
-    [router, path, setPagination]
+    [router, path, setPagination, pagination]
   );
 
-  const handlePageBtn = () => {
-    let btnArr = [];
-    const showPageArrNum = Math.ceil(Number(currentPage) / showNum);
-    const lastPageArrNum = Math.ceil(Number(lastPage) / showNum);
+  const handlePageBtn = useCallback(() => {
+    {
+      let btnArr = [];
+      const showPageArrNum = Math.ceil(Number(currentPage) / showNum);
+      const lastPageArrNum = Math.ceil(Number(lastPage) / showNum);
 
-    // 총 페이지 수
-    const allPageNum = pagination.totalPage;
-    // 화면에 보여질 페이지의 마지막 페이지 번호
-    const endPageNum =
-      allPageNum < showPageArrNum * showNum
-        ? allPageNum
-        : showPageArrNum * showNum;
+      // 총 페이지 수
+      const allPageNum = pagination.totalPage;
+      // 화면에 보여질 페이지의 마지막 페이지 번호
+      const endPageNum =
+        allPageNum < showPageArrNum * showNum
+          ? allPageNum
+          : showPageArrNum * showNum;
 
-    for (
-      let i = showPageArrNum * showNum - (showNum - 1);
-      i <= endPageNum;
-      i++
-    ) {
-      btnArr.push(i);
+      for (
+        let i = showPageArrNum * showNum - (showNum - 1);
+        i <= endPageNum;
+        i++
+      ) {
+        btnArr.push(i);
+      }
+
+      if (showPageArrNum === lastPageArrNum) {
+        setIsLast(true);
+      } else {
+        setIsLast(false);
+      }
+      if (showPageArrNum === 1) {
+        setIsFirst(true);
+      } else {
+        setIsFirst(false);
+      }
+
+      setBtnArr([...btnArr]);
     }
-
-    if (showPageArrNum === lastPageArrNum) {
-      setIsLast(true);
-    } else {
-      setIsLast(false);
-    }
-    if (showPageArrNum === 1) {
-      setIsFirst(true);
-    } else {
-      setIsFirst(false);
-    }
-
-    setBtnArr([...btnArr]);
-  };
-
-  const memoizedHandlePageBtn = useCallback(() => {
-    handlePageBtn();
-  }, [pagination]);
+  }, [currentPage, lastPage, showNum, pagination.totalPage]);
 
   useEffect(() => {
-    memoizedHandlePageBtn();
-  }, [memoizedHandlePageBtn]);
+    handlePageBtn();
+  }, [currentPage, handlePageBtn]);
 
   useEffect(() => {
     if (paramsPage && !isClick) {
@@ -75,7 +73,7 @@ const Pagination = (props: IPaginationProps) => {
     } else if (currentPage === 1) {
       router.replace(`/${path}?page=1`);
     }
-  }, [paramsPage]);
+  }, [paramsPage, isClick]);
 
   return (
     <div className="flex">
