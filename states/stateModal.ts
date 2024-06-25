@@ -16,3 +16,8 @@ export const alertModalState = atom<IAlertModalState>({
     action: () => undefined,
   },
 });
+
+export const loadingModalState = atom<boolean>({
+  key: "loadingModalState",
+  default: false,
+});

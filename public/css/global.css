@@ -17,7 +17,8 @@ a {
 }
 
 input,
-textarea {
+textarea,
+select {
   @apply outline-0;
 }
 

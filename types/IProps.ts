@@ -93,3 +93,32 @@ export interface IPaginationProps {
   showNum: number;
   path: string;
 }
+
+export interface ISelectProps {
+  name: string;
+  value: string;
+  setValue: Function;
+  selectDisabled: boolean;
+  placeholder: string;
+  isRound: boolean;
+  list: Array<{ name: string; code: string }>;
+  fontSize?: FontSizeType;
+  color?: ColorType;
+  border?: ColorType;
+  className?: string;
+}
+
+export interface IObjSelectProps {
+  name: string;
+  list: Array<{ name: string; code: string }>;
+  selectDisabled: boolean;
+  setValues: Function;
+  values: { [key: string]: string } | Array<{ [key: string]: string }>;
+  placeholder: string;
+  fontSize?: FontSizeType;
+  className?: string;
+  color?: ColorType;
+  border?: ColorType;
+  isRound: boolean;
+  idx?: number;
+}

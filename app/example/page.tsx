@@ -11,18 +11,22 @@ import InvaildChkInput from "@/components/atoms/InvalidChkInput";
 import Button from "@/components/atoms/Button";
 import Label from "@/components/atoms/Label";
 import Pagination from "@/components/atoms/Pagination";
-import AlertModal from "@/components/molecules/modals/AlertModal";
+import Select from "@/components/atoms/Select";
+import ObjSelect from "@/components/atoms/ObjSelect";
 // utils
 import { handleCountTil, changeTypeObj } from "@/utils/commonUtils";
 // data
 import { DSignupInput } from "@/data/DInput";
+import { DDummySelectList } from "@/data/DSelect";
 // recoil
 import { useSetRecoilState } from "recoil";
-import { alertModalState } from "@/states/stateModal";
+import { alertModalState, loadingModalState } from "@/states/stateModal";
 
 const ExamplePage = () => {
   // alertModal recoil
   const setAlertInfo = useSetRecoilState(alertModalState);
+  // loadingModal recoil
+  const setLoading = useSetRecoilState(loadingModalState);
   // 단일 인풋 state
   const [input1, setInput1] = useState("");
   const [input2, setInput2] = useState("");
@@ -42,11 +46,24 @@ const ExamplePage = () => {
   // obj input state
   const [objInput, setObjInput] = useState({
     apple: "",
-    banana: "banana",
+    banana: "",
   });
   const [objInputArr, setObjInputArr] = useState<
     Array<{ [key: string]: string }>
   >([{ 이메일: "", 비밀번호: "" }]);
+
+  // 단일 select state
+  const [select, setSelect] = useState("");
+
+  // obj select state
+  const [objSelect, setObjSelect] = useState({
+    apple: "",
+    banana: "",
+    grape: "",
+  });
+  const [objSelectArr, setObjSelectArr] = useState([
+    { apple: "", banana: "", grape: "" },
+  ]);
 
   // pagination state
   const [pagination, setPagination] = useState<{
@@ -60,6 +77,11 @@ const ExamplePage = () => {
   // objInputArr 추가 버튼
   const addObjArr = () => {
     setObjInputArr([{ peter: "", bella: "" }, ...objInputArr]);
+  };
+
+  // objSelectArr 추가 버튼
+  const addObjSelectArr = () => {
+    setObjSelectArr([{ apple: "", banana: "", grape: "" }, ...objSelectArr]);
   };
 
   return (
@@ -228,7 +250,7 @@ const ExamplePage = () => {
             inputMode={"text"}
             type={"text"}
             maxLength={undefined}
-            className="mt-5"
+            className="mt-2"
           />
         ))
       )}
@@ -259,7 +281,7 @@ const ExamplePage = () => {
         path={"example"}
       />
 
-      <h1 className="mt-5">모달 열기</h1>
+      <h1 className="mt-5">알럿 모달 열기</h1>
       <Button
         title={"모달 열기"}
         bg={"primary-sub"}
@@ -278,7 +300,71 @@ const ExamplePage = () => {
         }
         isRound={true}
       />
-      <AlertModal />
+      <h1 className="mt-5">로딩 모달 열기</h1>
+      <Button
+        title={"로딩 모달 열기"}
+        bg={"primary-sub"}
+        color={"white"}
+        action={() => setLoading(true)}
+        isRound={true}
+      />
+
+      <h1 className="mt-5">단일 Select</h1>
+      <Select
+        name={"exSelect"}
+        value={select}
+        setValue={setSelect}
+        selectDisabled={false}
+        placeholder={"옵션을 선택해주세요."}
+        list={DDummySelectList}
+        isRound={true}
+      />
+
+      <h1 className="mt-5">Obj Select 응용</h1>
+      <ObjSelect
+        name={"apple"}
+        list={DDummySelectList}
+        selectDisabled={false}
+        setValues={setObjSelect}
+        values={objSelect}
+        placeholder={"값을 선택하여 주세요."}
+        isRound={false}
+      />
+      <ObjSelect
+        name={"grape"}
+        list={DDummySelectList}
+        selectDisabled={false}
+        setValues={setObjSelect}
+        values={objSelect}
+        placeholder={"값을 선택하여 주세요."}
+        isRound={false}
+        className="mt-2"
+      />
+
+      <h1 className="mt-5">Obj Select Array 응용</h1>
+      <Button
+        title={"추가하기"}
+        isRound={true}
+        bg={"green-light"}
+        action={addObjSelectArr}
+        color={"white"}
+      />
+      {objSelectArr.map((el, idx) =>
+        Object.keys(el).map((key) => (
+          <ObjSelect
+            key={key}
+            idx={idx}
+            isRound={false}
+            name={key}
+            setValues={setObjSelectArr}
+            values={objSelectArr}
+            placeholder={"값을 선택해주세요."}
+            className="mt-2"
+            list={DDummySelectList}
+            selectDisabled={false}
+          />
+        ))
+      )}
     </div>
   );
 };

@@ -1,26 +1,30 @@
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 // react
-import { useState, useEffect, useCallback, useMemo } from "react";
+import { useState, useEffect, useCallback } from "react";
 // interface
 import { IPaginationProps } from "@/types/IProps";
-// utils
-import { handleScrollToTop } from "@/utils/commonUtils";
 
 const Pagination = (props: IPaginationProps) => {
   const { pagination, setPagination, showNum, path } = props;
 
   const router = useRouter();
+  const paramsPage = useSearchParams().get("page");
   const currentPage = pagination.currentPage;
   const lastPage = pagination.totalPage;
 
   const [btnArr, setBtnArr] = useState<Array<number>>([1]);
   const [isLast, setIsLast] = useState<boolean>(false);
   const [isFirst, setIsFirst] = useState<boolean>(false);
+  const [isClick, setIsClick] = useState<boolean>(false);
 
-  const handlePagination = (num: number) => {
-    setPagination({ ...pagination, currentPage: num });
-    handleScrollToTop();
-  };
+  const handlePagination = useCallback(
+    (num: number) => {
+      setIsClick(true);
+      setPagination({ ...pagination, currentPage: num });
+      router.replace(`/${path}?page=${num}`);
+    },
+    [router, path, setPagination]
+  );
 
   const handlePageBtn = () => {
     let btnArr = [];
@@ -57,23 +61,21 @@ const Pagination = (props: IPaginationProps) => {
     setBtnArr([...btnArr]);
   };
 
-  const pagePath = useMemo(
-    () => `/${path}?page=${currentPage}`,
-    [path, currentPage]
-  );
-
-  const updateRouter = useCallback(() => {
-    router.replace(pagePath);
-  }, [router, pagePath]);
-
   const memoizedHandlePageBtn = useCallback(() => {
     handlePageBtn();
   }, [pagination]);
 
   useEffect(() => {
-    updateRouter();
     memoizedHandlePageBtn();
-  }, [updateRouter, memoizedHandlePageBtn]);
+  }, [memoizedHandlePageBtn]);
+
+  useEffect(() => {
+    if (paramsPage && !isClick) {
+      setPagination({ ...pagination, currentPage: +paramsPage });
+    } else if (currentPage === 1) {
+      router.replace(`/${path}?page=1`);
+    }
+  }, [paramsPage]);
 
   return (
     <div className="flex">
