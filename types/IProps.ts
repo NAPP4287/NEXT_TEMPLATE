@@ -144,3 +144,20 @@ export interface IMainTempleteProps {
   title: string;
   children: ReactNode;
 }
+
+export interface IFindFileProps {
+  placeholder: string;
+  value: { filePath: string; fileName: string };
+  setValue: Function;
+  className?: string;
+  accept: string;
+}
+
+export interface ICheckBoxProps {
+  type: "single" | "all";
+  values: { [key: string]: boolean };
+  setValues: Function;
+  allValue: boolean;
+  setAllValue: Function;
+  name: string;
+}

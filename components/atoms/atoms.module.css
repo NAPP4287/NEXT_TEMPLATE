@@ -1,0 +1,21 @@
+/* FindFile */
+.filebox {
+  @apply flex items-center flex-wrap;
+}
+
+.filebox input[type="file"] {
+  @apply absolute w-0 h-0 p-0 hidden border-0;
+}
+
+.upload-name {
+  @apply bg-gray-bg border border-gray-bg p-sm rounded-md flex-1 mr-sm mb-sm;
+}
+
+.file-button {
+  @apply bg-gray-bg border border-gray-bg px-df py-sm rounded-md text-primary-main block;
+}
+
+/* Checkbox */
+.chkbox-wrap input {
+  @apply accent-primary-main;
+}
