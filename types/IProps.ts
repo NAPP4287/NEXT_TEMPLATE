@@ -161,3 +161,12 @@ export interface ICheckBoxProps {
   setAllValue: Function;
   name: string;
 }
+
+export interface IRadioProps {
+  name: string;
+  radioVal: string;
+  value: string;
+  setValue: Function;
+  disabled: boolean;
+  title: string;
+}

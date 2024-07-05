@@ -1,6 +1,6 @@
 "use client";
 // react
-import { useEffect, useCallback } from "react";
+import { useEffect, useCallback, useState } from "react";
 // recoil
 import { useRecoilState } from "recoil";
 import { alertModalState } from "@/states/stateModal";
@@ -10,6 +10,8 @@ import styles from "@/components/molecules/modals/modal.module.css";
 import Button from "@/components/atoms/Button";
 
 const AlertModal = () => {
+  const [render, setRender] = useState(false);
+
   const [alertInfo, setAlertInfo] = useRecoilState(alertModalState);
   const { isOpen, isOne, title, type, contents, rbtnTitle, lbtnTitle, action } =
     alertInfo;
@@ -31,6 +33,7 @@ const AlertModal = () => {
 
   useEffect(() => {
     if (isOpen) {
+      setRender(true);
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "auto";
@@ -39,9 +42,9 @@ const AlertModal = () => {
 
   return (
     <div
-      className={`${isOpen ? "animate-fadein" : "animate-fadeout"} ${
-        styles.modalWrap
-      }`}
+      className={`${
+        !render ? "" : isOpen ? "animate-fadein" : "animate-fadeout"
+      } ${styles.modalWrap}`}
       onClick={closeModal}
     >
       <div

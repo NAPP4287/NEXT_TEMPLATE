@@ -1,6 +1,6 @@
 "use client";
 // react
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 // recoil
 import { useRecoilState, useRecoilValue } from "recoil";
 import { loadingModalState } from "@/states/stateModal";
@@ -11,10 +11,13 @@ import Lottie from "react-lottie-player";
 import LoadingLottie from "@/public/lottie/loading.json";
 
 const Loading = () => {
+  const [render, setRender] = useState(false);
+
   const isLoading = useRecoilValue(loadingModalState);
 
   useEffect(() => {
     if (isLoading) {
+      setRender(true);
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "auto";
@@ -23,9 +26,9 @@ const Loading = () => {
 
   return (
     <div
-      className={`${isLoading ? "animate-fadein" : "animate-fadeout"} ${
-        styles.modalWrap
-      }`}
+      className={`${
+        !render ? "" : isLoading ? "animate-fadein" : "animate-fadeout"
+      } ${styles.modalWrap}`}
     >
       <Lottie
         loop

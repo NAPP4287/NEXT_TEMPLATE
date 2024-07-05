@@ -19,3 +19,16 @@
 .chkbox-wrap input {
   @apply accent-primary-main;
 }
+
+/* Radio */
+.radio-wrap {
+  @apply flex;
+}
+
+.radio-wrap p {
+  @apply ml-1;
+}
+
+.custom-radio {
+  @apply appearance-none w-[14px] h-[14px] border-2 border-white rounded-full outline cursor-pointer ring-1 ring-gray-md;
+}
