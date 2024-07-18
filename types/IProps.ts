@@ -170,3 +170,9 @@ export interface IRadioProps {
   disabled: boolean;
   title: string;
 }
+
+export interface IEditorBoxProps {
+  name: string;
+  values: { [key: string]: any };
+  setValues: Function;
+}
