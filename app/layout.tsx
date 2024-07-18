@@ -27,6 +27,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko">
+      <head>
+        <link rel="preload" href="/css/global.css" as="style" />
+        <link rel="stylesheet" href="/css/global.css" />
+      </head>
       <RecoilRootWrapper>
         <body>
           <div className="max-width">{children}</div>

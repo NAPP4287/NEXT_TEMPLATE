@@ -23,6 +23,8 @@ import { DDummySelectList } from "@/data/DSelect";
 import { useSetRecoilState } from "recoil";
 import { alertModalState, loadingModalState } from "@/states/stateModal";
 
+import EditorBox from "@/components/edtior/EditorBox";
+
 const ExamplePage = () => {
   // alertModal recoil
   const setAlertInfo = useSetRecoilState(alertModalState);
@@ -393,6 +395,8 @@ const ExamplePage = () => {
         limitSize={{ unit: "MB", size: 2 }} // 2KB
         className="mt-2"
       />
+
+      <EditorBox />
     </div>
   );
 };

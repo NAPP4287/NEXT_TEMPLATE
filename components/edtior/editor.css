@@ -1,0 +1,28 @@
+.ck-powered-by-balloon {
+  display: none !important;
+}
+.ck-content {
+  height: 500px !important;
+  outline: none;
+}
+.ck-focused {
+  border: none !important;
+  box-shadow: none !important;
+}
+.ck-editor {
+  border: 1px solid #d5d5d5 !important;
+  border-radius: 6px;
+  width: 100% !important;
+}
+.ck.ck-editor__top .ck-sticky-panel .ck-sticky-panel__content {
+  border: none !important;
+}
+.ck.ck-editor__main > .ck-editor__editable:not(.ck-focused) {
+  border: none !important;
+}
+.ck-reset_all :not(.ck-reset_all-excluded *) {
+  border-radius: 6px 6px 0 0 !important;
+}
+.ck-toolbar {
+  background-color: #f0f0f0 !important;
+}
