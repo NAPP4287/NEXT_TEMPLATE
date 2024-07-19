@@ -39,3 +39,4 @@ next-env.d.ts
 
 # node_modules
 /ckeditor5/node_modules
+/ckeditor5/build

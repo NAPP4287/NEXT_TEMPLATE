@@ -172,7 +172,6 @@ export interface IRadioProps {
 }
 
 export interface IEditorBoxProps {
-  name: string;
-  values: { [key: string]: any };
-  setValues: Function;
+  value: string;
+  setValue: Function;
 }

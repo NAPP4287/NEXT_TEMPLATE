@@ -13,7 +13,7 @@ import { ClassicEditor } from "ckeditor5";
 import { EditorConfig } from "@/components/edtior/DEditor";
 
 const EditorBox = (props: IEditorBoxProps) => {
-  const { values, setValues, name } = props;
+  const { value, setValue } = props;
 
   const editorContainerRef = useRef(null);
   const editorRef = useRef(null);
@@ -21,30 +21,28 @@ const EditorBox = (props: IEditorBoxProps) => {
 
   useEffect(() => {
     setIsLayoutReady(true);
+
     return () => setIsLayoutReady(false);
   }, []);
 
   return (
-    <div>
-      <div className="main-container">
-        <div
-          className="editor-container editor-container_classic-editor"
-          ref={editorContainerRef}
-        >
-          <div className="editor-container__editor">
-            <div ref={editorRef}>
-              {isLayoutReady && (
-                <CKEditor
-                  editor={ClassicEditor}
-                  config={EditorConfig}
-                  data={values.content}
-                  onChange={(event, editor) => {
-                    const data = editor.getData();
-                    setValues({ ...values, content: data });
-                  }}
-                />
-              )}
-            </div>
+    <div className="main-container w-full">
+      <div
+        className="editor-container editor-container_classic-editor"
+        ref={editorContainerRef}
+      >
+        <div className="editor-container__editor">
+          <div ref={editorRef}>
+            {isLayoutReady && (
+              <CKEditor
+                editor={ClassicEditor}
+                config={EditorConfig}
+                data={value}
+                onChange={(event, editor) => {
+                  setValue(editor.getData());
+                }}
+              />
+            )}
           </div>
         </div>
       </div>
