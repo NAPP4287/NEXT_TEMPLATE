@@ -1,5 +1,6 @@
 // 컴포넌트 사용 or 유틸 사용 예제 페이지
 "use client";
+import dynamic from "next/dynamic";
 // img
 import IconImg from "@/public/assets/icons/icon_accounts.png";
 // react
@@ -23,7 +24,12 @@ import { DDummySelectList } from "@/data/DSelect";
 import { useSetRecoilState } from "recoil";
 import { alertModalState, loadingModalState } from "@/states/stateModal";
 
-import EditorBox from "@/components/edtior/EditorBox";
+const DynamicEditorBox = dynamic(
+  () => import("@/components/edtior/EditorBox"),
+  {
+    ssr: false,
+  }
+);
 
 const ExamplePage = () => {
   // alertModal recoil
@@ -93,6 +99,8 @@ const ExamplePage = () => {
   const addObjSelectArr = () => {
     setObjSelectArr([{ apple: "", banana: "", grape: "" }, ...objSelectArr]);
   };
+
+  const [editorContent, setEditorContent] = useState("");
 
   return (
     <div className="r-flex-center mx-w-500 my-[100px]">
@@ -396,7 +404,7 @@ const ExamplePage = () => {
         className="mt-2"
       />
 
-      <EditorBox />
+      <DynamicEditorBox value={editorContent} setValue={setEditorContent} />
     </div>
   );
 };

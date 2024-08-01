@@ -48,7 +48,10 @@ const fetchInterceptor = (
         }
 
         if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`);
+          const errorData = await response.json();
+          throw new Error(
+            `ERR_STATUS:${response.status} ERR_MSG:${errorData.message}`
+          );
         }
 
         return response;
@@ -80,7 +83,7 @@ const refreshTokenFn = async () => {
   if (!refreshResponse.ok) {
     // refreshToken도 만료
     // 강제 로그아웃 필수
-    throw new Error("LOGOUT");
+    `ERR_STATUS:${refreshResponse.status}`;
   }
 
   const data = await refreshResponse.json();

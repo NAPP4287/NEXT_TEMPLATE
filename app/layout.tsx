@@ -20,6 +20,16 @@ const DynamicComponentWithNoSSRAlert = dynamic(
   { ssr: false }
 );
 
+const DynamicErrorAlert = dynamic(
+  () => import("@/components/molecules/modals/ErrorModal"),
+  { ssr: false }
+);
+
+const DynamicSuccessAlert = dynamic(
+  () => import("@/components/molecules/modals/SuccessModal"),
+  { ssr: false }
+);
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -36,6 +46,8 @@ export default function RootLayout({
           <div className="max-width">{children}</div>
           <DynamicComponentWithNoSSRLoading />
           <DynamicComponentWithNoSSRAlert />
+          <DynamicErrorAlert />
+          <DynamicSuccessAlert />
         </body>
       </RecoilRootWrapper>
     </html>

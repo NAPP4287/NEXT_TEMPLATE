@@ -175,3 +175,7 @@ export interface IEditorBoxProps {
   value: string;
   setValue: Function;
 }
+
+export interface IParamsProps {
+  searchParams: { [key: string]: string | string[] | undefined };
+}

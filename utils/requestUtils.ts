@@ -38,7 +38,12 @@ const reqObj = (
 ) => {
   return {
     method: method,
-    headers: { ...headers(accessToken, contentType) },
+    headers: {
+      ...headers(accessToken, contentType),
+      "Cache-Control": "no-store",
+    },
+    cache: "no-store" as RequestCache,
+    next: { tags: ["collection"] },
     body: body,
   };
 };
@@ -53,7 +58,6 @@ export const createGetRequest = async (url: string) => {
   const res = await customFetch(requestUrl, {
     ...reqObj("GET", testToken),
   });
-
   return res.json();
 };
 
@@ -71,7 +75,7 @@ export const createPostRequest = async (
   const contentType = typeof body === "string" ? "" : "application/json";
 
   const res = await customFetch(requestUrl, {
-    ...reqObj("POST", testToken, contentType, stringBody),
+    ...reqObj("POST", accessToken, contentType, stringBody),
   });
 
   return res.json();
