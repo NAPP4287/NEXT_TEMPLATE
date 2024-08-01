@@ -83,7 +83,7 @@ const refreshTokenFn = async () => {
   if (!refreshResponse.ok) {
     // refreshToken도 만료
     // 강제 로그아웃 필수
-    `ERR_STATUS:${refreshResponse.status}`;
+    throw new Error(`ERR_STATUS:${refreshResponse.status}`);
   }
 
   const data = await refreshResponse.json();
