@@ -179,3 +179,12 @@ export interface IEditorBoxProps {
 export interface IParamsProps {
   searchParams: { [key: string]: string | string[] | undefined };
 }
+
+export interface IClipboardProps {
+  title: string;
+  copyTxt: string;
+  action: Function;
+  className?: string;
+  img?: StaticImageData;
+  imgPlace?: "left" | "right";
+}

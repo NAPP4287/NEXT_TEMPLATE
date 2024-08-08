@@ -62,6 +62,11 @@ const Input = (props: IInputProps) => {
       | React.ChangeEvent<HTMLInputElement>
       | React.ChangeEvent<HTMLTextAreaElement>
   ) => {
+    if (type === "number" && maxLength !== undefined) {
+      if (e.target.value.length > maxLength) {
+        e.target.value = e.target.value.slice(0, maxLength);
+      }
+    }
     setValue(e.target.value);
   };
 

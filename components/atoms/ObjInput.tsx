@@ -71,6 +71,11 @@ const ObjInput = (props: IObjInputProps) => {
       | React.ChangeEvent<HTMLInputElement>
       | React.ChangeEvent<HTMLTextAreaElement>
   ) => {
+    if (type === "number" && maxLength !== undefined) {
+      if (e.target.value.length > maxLength) {
+        e.target.value = e.target.value.slice(0, maxLength);
+      }
+    }
     if (Array.isArray(values) && idx !== undefined) {
       // values가 배열일 때 해당 요소의 해당 키를 가진 값을 변경
       const frontArr = values.slice(0, idx);
