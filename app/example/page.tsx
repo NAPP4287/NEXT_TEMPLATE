@@ -1,10 +1,11 @@
 // 컴포넌트 사용 or 유틸 사용 예제 페이지
 "use client";
 import dynamic from "next/dynamic";
+import { useRouter } from "next/navigation";
 // img
 import IconImg from "@/public/assets/icons/icon_accounts.png";
 // react
-import { useState } from "react";
+import { useState, useEffect } from "react";
 // components
 import Input from "@/components/atoms/Input";
 import ObjInput from "@/components/atoms/ObjInput";
@@ -32,6 +33,7 @@ const DynamicEditorBox = dynamic(
 );
 
 const ExamplePage = () => {
+  const router = useRouter();
   // alertModal recoil
   const setAlertInfo = useSetRecoilState(alertModalState);
   // loadingModal recoil
@@ -101,6 +103,10 @@ const ExamplePage = () => {
   };
 
   const [editorContent, setEditorContent] = useState("");
+
+  useEffect(() => {
+    console.log("??", pagination);
+  }, [pagination.currentPage]);
 
   return (
     <div className="r-flex-center mx-w-500 my-[100px]">
@@ -297,6 +303,13 @@ const ExamplePage = () => {
         setPagination={setPagination}
         showNum={3}
         path={"example"}
+      />
+      <Button
+        title="렌더"
+        bg={"red-main"}
+        color={"white"}
+        action={() => router.replace("/example")}
+        isRound={false}
       />
 
       <h1 className="mt-5">알럿 모달 열기</h1>

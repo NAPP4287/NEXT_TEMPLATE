@@ -43,7 +43,7 @@ export default function RootLayout({
       </head>
       <RecoilRootWrapper>
         <body>
-          <div className="max-width">{children}</div>
+          <div className="max-width bg-white">{children}</div>
           <DynamicComponentWithNoSSRLoading />
           <DynamicComponentWithNoSSRAlert />
           <DynamicErrorAlert />

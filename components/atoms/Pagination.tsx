@@ -70,8 +70,9 @@ const Pagination = (props: IPaginationProps) => {
   useEffect(() => {
     if (paramsPage && !isClick) {
       setPagination({ ...pagination, currentPage: +paramsPage });
-    } else if (currentPage === 1) {
+    } else if (currentPage === 1 || !paramsPage) {
       router.replace(`/${path}?page=1`);
+      setPagination({ ...pagination, currentPage: 1 });
     }
   }, [paramsPage, isClick]);
 
